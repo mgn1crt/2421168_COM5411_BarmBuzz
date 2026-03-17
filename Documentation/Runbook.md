@@ -5,11 +5,11 @@
 ## 06/03/2026 Imported template and updated Runbook.md:
 1. Imported student template for git repository (as "Initial commit") from https://github.com/beeteetoo/Student_COM5411_Barmbuzz.
 
-> Evidence: "Initial commit" of 06/03/2026 at 
+> Evidence: Documentation\Runbook.md per "Initial commit" of 06/03/2026 at 
 
 2. Removed superfluous information (that being references to items outside of this repository) from this (Runbook.md) file.
 
-> Evidence: "Initial template commit" of 06/03/2026.
+> Evidence: Documentation\Runbook.md per "Initial template commit" of 06/03/2026.
 
 3. Noted that procedure to resolve inability to commit was not fully resolved as expected:
     1. Initiai failiure to commit caused by apparent non-existence of keys was actually due to syntax error in GPG configuration.
@@ -18,12 +18,20 @@
     4. However, this resulted in a commit of the previous commit of Runbook.md shown as Unverified as the noreply address did not match the commiter email.
     5. This should be resolved through adding this additional email address to the key via *gpg --edit-key*.
 
-> Evidence: "Updated Runbook.md" of 06/03/2026 and this file.
+> Evidence: Documentation\Runbook.md per "Updated Runbook.md" of 06/03/2026.
 
-## 17/03/2026 Updated Runbook.md:
+## 17/03/2026 0712 Updated Runbook.md:
 
 1. Applied consistent improved format to Runbook and removed logging guidance from initial template (as of 06/03/2026 /1 above).
 2. Provided single prioritised link (at start of document) to repository and removed duplicitous references to this per evidence detail (all commits inherently sit within the repository as specified in that URL).
 
+> Evidence: Documentation\Runbook.md per "Updated Runbook.md" of 17/03/2026.
 
-> Evidence: "Updated Runbook.md" of 17/03/2026 and this file.
+## 17/03/2026 0834 Updated Runbook.md/README.md skeleton upload:
+
+1. Clarified updated file locations per evidence statements in Runbook.
+2. Created skeleton for README.md.
+
+> Evidence: Documentation\Runbook.md and Documentation\README.md per "Updated Runbook.md & README.md skeleton" of 17/03/2026.
+
+
