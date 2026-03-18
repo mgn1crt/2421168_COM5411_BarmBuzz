@@ -1,9 +1,11 @@
 # README.md 
-# BarmBuzz (2421168 - Mark Naylor)
-# COM5411 | Enterprise Operating Systems (Bren Tighe)
-# Submission: Wednesday 18th March 2026
 
-## Repository link is: https://github.com/mgn1crt/2421168_COM5411_BarmBuzz
+BarmBuzz (2421168 - Mark Naylor)  
+COM5411 | Enterprise Operating Systems (Bren Tighe)  
+Submission: Wednesday 18th March 2026  
+
+Repository link is: https://github.com/mgn1crt/2421168_COM5411_BarmBuzz  
+ZIP per repository "" as of TBC TBC.
 
 ## 1. Solution overview
 
@@ -19,17 +21,40 @@ Text pending...
 
 ## 4. Repository structure
 
-Text pending...
+```
++---Documentation
++---DSC
+|   +---Configurations
+|   +---Data
+|   \---Outputs
++---Evidence
+|   +---AD
+|   +---AI_LOG
+|   +---DSC
+|   +---Git
+|   |   \---Reflog
+|   +---GPOBackups
+|   +---HealthChecks
+|   +---Network
+|   +---Pester
+|   \---Screenshots
++---Scripts
+|   +---Helpers
+|   \---Prereqs
+\---Tests
+    \---Pester
+```
+
+All paths are relative to ensure portability.
 
 ## 5. Execution order (Run Book)
 
 Some intro text TBC...
 
-- All commands to be executed in Powershell 7 unless specified otherwise.
+- All commands to be executed in Powershell unless specified otherwise.
 - Use an elevated terminal.
-- Copy or type the code as specfied in the fenced boxes.
+- Copy or type the code as specfied.
 
-All commands to be executed in Powershell 7 unless specified otherwisd
 ### Domain Controller BOLTON configuration
 
 #### Time configuration
@@ -108,6 +133,44 @@ Required configuration for networking on DC-BOLTON:
     ```Powershell
     Set-DnsClientServerAddress -InterfaceAlias "Ethernet 2" -ServerAddresses 192.168.1.10
     ```
+
+#### Update Windows
+
+Text TBC...
+
+#### Install PowerShell 7
+
+Windows Server 2025 includes PowerShell 5.1; it is necessary to install PowerShell 7.x manually.
+
+> ⚠️ PowerShell 5.1 is still required, do not remove it.
+
+Install PowerShell 7.x using winget:
+
+```Powershell
+winget install -e --id Microsoft.PowerShell -s winget
+```
+
+Verify installation by launching **pwsh** from within Windows, and in the Powershell 7 terminal:
+
+```Powershell
+$PSVersionTable
+```
+
+#### Install Desired State Configuration 3
+
+Install DSC 3 using winget:
+
+```Powershell
+winget install -e --id Microsoft.DSC -s winget
+```
+
+Verify installation:
+
+```Powershell
+dsc --help
+```
+
+
 
 ## 6. Idempotence and re-run behaviour
 
