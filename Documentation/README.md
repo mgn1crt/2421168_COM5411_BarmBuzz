@@ -203,6 +203,7 @@ Windows 11 and Windows Server 2025 include PowerShell 5.1; it is necessary to in
     Save-PSResource -Name xPSDesiredStateConfiguration -Version 9.2.1 -Repository PSGallery -Path $dest -TrustRepositor
     Save-PSResource -Name Pester -Version 5.7.1 -Repository PSGallery -Path $dest -TrustRepository
     Save-PSResource -Name ComputerManagementDsc -Repository PSGallery -Path $dest -TrustRepository
+    Save-PSResource -Name NetworkingDsc -Repository PSGallery -Path $dest -TrustRepository
     ```
 
     Verify cross-version compatibility using a PowerShell 5.1 terminal:

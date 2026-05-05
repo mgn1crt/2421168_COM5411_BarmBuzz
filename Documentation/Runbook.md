@@ -164,8 +164,15 @@
 - Delayed by initially unrecognised syntax error causing an unexpected token (assiging using =); corrected.
 - After multiple runs, errors resolved.
 
-> Evidence: DSC\Outputs, DSC\Evidence, StudentConfi.psl.
+> Evidence: DSC\Outputs, DSC\Evidence, StudentConfig.psl.
 
+# 05/05/2026 2147 Updated StudentConfig.psl
+- For networking features.
+- Attempted script run, but failed due to lack of NetworkingDsc module.
+- Corrected by installing the module using 'Install-Module -Name NetworkingDsc -Repository PSGallery -Force'.
+- This module should already be present; consequently 'Save-PSResource -Name NetworkingDsc -Repository PSGallery -Path $dest -TrustRepository' added to Readme.md install instructions.
+
+> Evidence: DSC\Outputs, DSC\Evidence, StudentConfig.psl, Readme.md, and "Updated StudentConfig.psl for networking configuration" commit.
 
 
 
