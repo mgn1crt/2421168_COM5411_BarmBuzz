@@ -205,8 +205,14 @@ Windows 11 and Windows Server 2025 include PowerShell 5.1; it is necessary to in
     Save-PSResource -Name ComputerManagementDsc -Repository PSGallery -Path $dest -TrustRepository
     Save-PSResource -Name NetworkingDsc -Repository PSGallery -Path $dest -TrustRepository
     ```
+    Switch to a Powershell 5.1 terminal.
+    Install NetworkingDsc module:
 
-    Verify cross-version compatibility using a PowerShell 5.1 terminal:
+    ```Powershell
+    Install-Module -Name NetworkingDsc -Scope AllUsers -Force
+    ```
+
+    Verify cross-version compatibility:
 
      ```Powershell
     Get-Module ActiveDirectoryDsc,GroupPolicyDsc,PSDesiredStateConfiguration,Pester,ComputerManagementDsc -ListAvailable
