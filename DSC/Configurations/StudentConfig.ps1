@@ -123,7 +123,7 @@ Configuration StudentBaseline
     {
         IPAddress      = "$($node.Network.IPAddress)/$($node.Network.PrefixLength)"
         InterfaceAlias = $node.Network.InterfaceAlias
-        AddressFamily  = [String]$node.Network.AddressFamily
+        AddressFamily  = $node.Network.AddressFamily
         
         # Commented out as not valid.
         # PrefixLength   = $node.Network.PrefixLength
@@ -134,7 +134,7 @@ Configuration StudentBaseline
     {
         Address        = $node.Network.DefaultGateway
         InterfaceAlias = $node.Network.InterfaceAlias
-        AddressFamily  = [String]$node.Network.AddressFamily
+        AddressFamily  = $node.Network.AddressFamily
         DependsOn      = '[IPAddress]StaticIPv4'
     
     }
@@ -144,7 +144,7 @@ Configuration StudentBaseline
     {
         Address        = $node.Network.DnsServers
         InterfaceAlias = $node.Network.InterfaceAlias
-        AddressFamily  = [String]$node.Network.AddressFamily
+        AddressFamily  = $node.Network.AddressFamily
         DependsOn      = '[IPAddress]StaticIPv4'
     }
 }
