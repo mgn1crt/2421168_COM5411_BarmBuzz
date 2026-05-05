@@ -49,17 +49,17 @@ All paths are relative to ensure portability.
 
 ## 5. Execution order (Run Book)
 
-Some intro text TBC...
-
 - All commands to be executed in Powershell unless specified otherwise.
 - Use an elevated terminal.
 - Copy or type the code as specfied.
 
-### Domain Controller BOLTON configuration
+> Some sections apply only to specific machines, apply as noted.
 
 #### Time configuration
 
 Incorrect/mismatched time zone configuration can induce authorisation failiure due to Kerberos security restrictions.
+
+> This section applies to all Windows machines.
 
 1. **Time zone**
 
@@ -91,9 +91,9 @@ Incorrect/mismatched time zone configuration can induce authorisation failiure d
     Get-TimeZone
     ```
 
-
-
 #### Networking
+
+> Apply to domain controller DC-BOLTON on the Windows Server 2025 machine only.
 
 Required configuration for networking on DC-BOLTON:
 
@@ -136,40 +136,87 @@ Required configuration for networking on DC-BOLTON:
 
 #### Update Windows
 
-Text TBC...
+> This section applies to all Windows machines.
+
+Apply Windows updates using the GUI.
 
 #### Install PowerShell 7
 
-Windows Server 2025 includes PowerShell 5.1; it is necessary to install PowerShell 7.x manually.
+> This section applies to all Windows machines.
 
-> ⚠️ PowerShell 5.1 is still required, do not remove it.
+Windows 11 and Windows Server 2025 include PowerShell 5.1; it is necessary to install PowerShell 7.x manually as both versions are required.
 
 Install PowerShell 7.x using winget:
 
 ```Powershell
 winget install -e --id Microsoft.PowerShell -s winget
 ```
+> Powershell 7.x can be launched from within Windows using the command **pwsh**.
 
-Verify installation by launching **pwsh** from within Windows, and in the Powershell 7 terminal:
+Verify installation in a Powershell 7 terminal:
 
 ```Powershell
 $PSVersionTable
 ```
 
-#### Install Desired State Configuration 3
+#### Desired State Configuration 3
 
-Install DSC 3 using winget:
+> This section applies to all Windows machines.
 
-```Powershell
-winget install -e --id Microsoft.DSC -s winget
-```
+1. Install DSC 3 using winget:
 
-Verify installation:
+    ```Powershell
+    winget install -e --id Microsoft.DSC -s winget
+    ```
 
-```Powershell
-dsc --help
-```
+2. Verify installation:
 
+    ```Powershell
+    dsc --help
+    ```
+3. Modules:
+
+    As platform neutrality is required, the PSResourceGet module must be installed.
+
+    Verify availability of module PSResourceGet:
+
+    ```Powershell
+    Get-Module Microsoft.PowerShell.PSResourceGet -ListAvailable
+    ```
+
+    Add modules directory as destination of Windows PowerShell global module directory variable into shell:
+
+    ```Powershell
+    Get-Module Microsoft.PowerShell.PSResourceGet -ListAvailable
+    ```
+
+    Download required administrative DSC and Pester modules:
+
+     ```Powershell
+    Save-PSResource -Name ActiveDirectoryDsc -Version 6.6.0 -Repository PSGallery -Path $dest -TrustRepository
+    Save-PSResource -Name GroupPolicyDsc -Version 1.0.3 -Repository PSGallery -Path $dest -TrustRepository
+    Save-PSResource -Name PSDesiredStateConfiguration -Version 2.0.7 -Repository PSGallery -Path $dest -TrustRepository
+    Save-PSResource -Name Pester -Version 5.7.1 -Repository PSGallery -Path $dest -TrustRepository
+    Save-PSResource -Name ComputerManagementDsc -Repository PSGallery -Path $dest -TrustRepository
+    ```
+
+    Verify cross-version compatibility using a PowerShell 5.1 terminal:
+
+     ```Powershell
+    Get-Module ActiveDirectoryDsc,GroupPolicyDsc,PSDesiredStateConfiguration,Pester,ComputerManagementDsc -ListAvailable
+    ```
+
+    Install RSAT tools using a PowerShell 5.1 terminal:
+
+    ```Powershell
+    # On Windows Server 2025:
+    Install-WindowsFeature -Name RSAT-AD-PowerShell -IncludeAllSubFeature
+    Install-WindowsFeature -Name GPMC
+
+    # On Windows 11:
+    Add-WindowsCapability -Online -Name Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0
+    Add-WindowsCapability -Online -Name Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0
+    ``` 
 
 
 ## 6. Idempotence and re-run behaviour
