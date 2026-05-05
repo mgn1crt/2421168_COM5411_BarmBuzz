@@ -44,12 +44,30 @@ This is not paranoia - this is professional discipline.
 Configuration StudentBaseline {
     param()
 
+    # Import modules.
     Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName ComputerManagementDSC
     #Import-DscResource -ModuleName ActivedirectoryDSC
 
 
     Node $AllNodes.NodeName {
+        # Pull the node object so every resource reads from the data plane.
+        $node = $ConfigurationData.AllNodes | Where-Object NodeName -eq $Node.NodeName
+
+        # Baseline control 1: Computer identity.
+        # Renaming is pre-requisite for stable AD DS identity.
+        Computer SetComputerName
+        {
+            Name = $node.ComputerName
+        }
+
+        # Baselien control 2: Time zone.
+        # Kerberos and log forensics dependent on consistent time interpretation.
+        TimeZone SetTimeZone
+        {
+            IsSingleInstance = 'Yes'
+            TimeZone = $node.TimeZone
+        }
 
         # Ensure C:\TEST exists
         File TestFolder {
