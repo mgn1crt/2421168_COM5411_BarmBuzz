@@ -154,3 +154,8 @@
 
 # 05/05/2026 2034 Repeated Run_BuildMain.psl testing.
 - Ran script, same errors repeated.
+- Multiple configuration changes tried as unable to establish.
+- Finally fixed key already used error, was a hashtable reference; remains but commented out for identification.
+
+> Evidence: DSC\Outputs, DSC\Evidence, StudentConfig.psl, and "Attempted StudentConfig.psl correction" commits.
+
