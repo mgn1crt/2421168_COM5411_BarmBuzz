@@ -223,6 +223,54 @@ Windows 11 and Windows Server 2025 include PowerShell 5.1; it is necessary to in
     Install-WindowsFeature -Name GPMC
     ```
 
+    Return to a Powershell 7 terminal.
+    Re-set destination path:
+
+    ```Powershell
+    $dest = "C:\Program Files\WindowsPowerShell\Modules"
+    ```
+
+    Pin ActiveDirectoryDsc module to version 6.6.0 for consistency:
+
+    ```Powershell
+    Save-PSResource -Name ActiveDirectoryDsc -version 6.6.0 -Repository PSGallery -Path $Dest -TrustRepository
+    ```
+
+    Verify ActiveDirectorySync using a Powershell 5.1 terminal:
+    ```Powershell
+    Get-Module -ListAvailable -Name ActiveDirectoryDsc
+    ```
+
+    Return to a PowerShell 7 terminal.
+    Re-set destination path:
+
+    ```Powershell
+    $dest = "C:\Program Files\WindowsPowerShell\Modules"
+    ```
+
+    Install GroupPolicyDsc module for GPO management:
+    
+    ```Powershell
+    Save-PSResource -Name GroupPolicyDsc -version 1.0.3 -Repository PSGallery -Path $Dest -TrustRepository
+    ```
+
+    Using a PowerShell 5.1 terminal, verify GroupPolicyDsc installation:
+
+    ```Powershell
+    Get-Module -ListAvailable -Name GroupPolicyDsc
+    ``` 
+
+    Re-set destination path:
+
+    ```Powershell
+    $dest = "C:\Program Files\WindowsPowerShell\Modules"
+    ```
+
+    Install Pester as a testing framework:
+
+    ```Powershell
+    Save-PSResource -Name Pester -RequiredVersion 5.7.1 -Repository PSGallery -Path $Dest -TrustRepository
+    ```  
 
 
 

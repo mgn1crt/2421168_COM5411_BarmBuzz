@@ -104,7 +104,7 @@
 
 > Evidence: **Screenshot filename pending**.
 
-# 05/05/2026 1527 PSDesiredStateConfiguration:
+# 05/05/2026 1527 PSDesiredStateConfiguration/RSAT:
 
 - Experienced issues with assuring cross PowerShell (i.e. with PowerShell 5.1 too) compatibility.
 - Noted was relying on guidance issued to run 'Save-PSResource -Name PSDesiredStateConfiguration -Version 2.0.7 -Repository PSGallery -Path $dest -TrustRepository'.
@@ -115,6 +115,16 @@
 - Restart necessary for RSAT installation undertaken subsequently, so commit actioned first.
 
 > Evidence: **Screenshot filename pending** and "PS module installation progress 1" commit.
+
+# 05/05/2026 1558 Continued installations:
+- Installed Group Policy Management console succesfully.
+- Verified installations sucessfully.
+- Pinned ActiveDirectoryDsc module to version 6.6.0, with Readme.md udpated to reflect this.
+- Installed and verified GroupPolicyDsc module with Readme.md updated.
+- Attempted installation of Pester; incorrect syntax corrected.
+- Re-attempted Pester installation, verified successfully with Readme.md updated to reflect this.
+
+> Evidence: **Screenshot filename pending** and "PS module installation progress 2" commit.
 
 
 
