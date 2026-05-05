@@ -47,7 +47,7 @@ Configuration StudentBaseline
     # Mandatory configuration parameters.
     param(
        [Parameter(Mandatory)]
-       [hashtable]$ConfigurationData,
+       [hashtable]$ConfigurationData
 
        # [Parameter(Mandatory)]
        # [PSCredential]$DomainAdminCredential,
