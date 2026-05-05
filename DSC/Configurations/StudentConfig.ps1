@@ -72,10 +72,10 @@ Configuration StudentBaseline
 
         # Baseline control 1: Computer identity.
         # Renaming is pre-requisite for stable AD DS identity.
-        Computer SetComputerName
-        {
-            Name = $Node.ComputerName
-        }
+        # Computer SetComputerName
+       # {
+       #     Name = $Node.ComputerName
+       # }
 
         # Baselien control 2: Time zone.
         # Kerberos and log forensics dependent on consistent time interpretation.
