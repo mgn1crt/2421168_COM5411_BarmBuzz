@@ -47,8 +47,8 @@ Configuration StudentBaseline
     # Mandatory configuration parameters.
     param(
        # This section caused the key already used error and is therefore commented out.
-       # [Parameter(Mandatory)]
-       # [hashtable]$ConfigurationData
+       [Parameter(Mandatory)]
+       [hashtable]$ConfigurationData
 
        [Parameter(Mandatory)]
        [PSCredential]$DomainAdminCredential,
