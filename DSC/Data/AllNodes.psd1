@@ -63,7 +63,7 @@ This is not just a rule - this is professional survival.
                 InterfaceAlias = 'Ethernet 2'
 
                 # Restrict to IPv4 to avoid IPV6 complications in labs.
-                AddressFamily = "IPv4"
+                AddressFamily = IPv4
 
                 # Static address specification for domain controller.
                 IPAddress = '192.168.1.10'
