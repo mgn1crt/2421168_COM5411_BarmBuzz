@@ -66,7 +66,7 @@ Configuration StudentBaseline
 
     $nodes = $ConfigurationData.AllNodes
 
-    Node $AllNodes.NodeName {
+    Node localhost {
         # Pull the node object so every resource reads from the data plane.
         # $node = $ConfigurationData.AllNodes | Where-Object { $_.NodeName -eq $Node.NodeName }
 
