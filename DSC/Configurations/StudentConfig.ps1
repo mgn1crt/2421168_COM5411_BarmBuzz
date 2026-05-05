@@ -66,13 +66,13 @@ Configuration StudentBaseline
 
     Node $AllNodes.NodeName {
         # Pull the node object so every resource reads from the data plane.
-        $node = $ConfigurationData.AllNodes | Where-Object { $_Node.Name -eq $Node.NodeName }
+        $node = $ConfigurationData.AllNodes | Where-Object { $_.NodeName -eq $Node.NodeName }
 
         # Baseline control 1: Computer identity.
         # Renaming is pre-requisite for stable AD DS identity.
         Computer SetComputerName
         {
-            Name = $node.ComputerName
+            Name = $Node.ComputerName
         }
 
         # Baselien control 2: Time zone.
@@ -97,12 +97,6 @@ Configuration StudentBaseline
             Ensure          = 'Present'
             Contents        = 'Proof-of-life: DSC created this file.'
             DependsOn       = '[File]TestFolder'
-        }
-
-        
-        
-
-
+        }      
     }
-   
 }
