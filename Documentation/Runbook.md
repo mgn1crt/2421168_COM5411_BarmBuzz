@@ -34,4 +34,29 @@
 
 > Evidence: Documentation\Runbook.md and Documentation\README.md per "Updated Runbook.md & README.md skeleton" of 17/03/2026.
 
+## 05/05/2026 1116 Began ascertaining/confirming current status via Hello.Tests.ps1 pester test.
+
+1. Ran Hello.Tests.ps1 pester test.
+2. Received RuNtimeException: '-Be' is not a valid Should operator error; research indicates outdated Pester module currently installed.
+3. Erroneously tried 'Import-Module Pester -RequiredVersion 5.7.1 -Force'.
+4. Received 'Import-Module: The specified module 'Pester' with version '5.7.1' was not loaded because no valid module file was found in any module directory.
+5. Resolved by updating using 'Install-Module -Name Pester -Force -SkipPublisherCheck'; completed successfully.
+6. Attempted Hello.Tests.ps1 pester test again.
+7. Received same error as per 2 above.
+8. Listed current Pester module status via 'Get-Module Pester -ListAvailable'.
+9. Noted two Pester versions, 3.4.0 and 5.7.1 installed.
+10. Forced use of later version using 'Import-Module Pester -RequiredVersion 5.7.1 -Force'.
+11. Attempted Hello.Tests.ps1 pester test again.
+12. Test passed.
+
+## 05/05/2026 1124 Continued ascertaining/confirming current status via Baseline.Tests.ps1 pester test.
+
+1. Ran Baseline.Tests.ps1 pester test.
+2. Realised scope of current work remaining and gained insight into this; this has been delayed by my current health.
+3. Was using the Readme.md as a reference point (pre-constructing this file), rewriting this.
+4. Applied DC-01 hostname to DC-TEST VM.
+
+> Evidence: **Screenshot filename pending** and "Intermittent commit - hostname" of 1134 05/05/2026.
+
+
 

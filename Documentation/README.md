@@ -117,7 +117,7 @@ Required configuration for networking on DC-BOLTON:
     Set the **Hostname**:
 
     ```Powershell
-    Rename-Computer -NewName "BARM-DC-01" -Restart
+    Rename-Computer -NewName "DC-01" -Restart
     ```
 
 2. **First network adaptor**
