@@ -58,5 +58,67 @@
 
 > Evidence: **Screenshot filename pending** and "Intermittent commit - hostname" of 1134 05/05/2026.
 
+## 05/05/2026 1147 Verified hostname rename.
+
+1. Ran 'hostname' command.
+2. Updated Readme.md to specify this action to confirm rename.
+
+> Evidence: **Screenshot filename pending**.
+
+## 05/05/2026 1154 Ran Baseline.ps1 pester test.
+1. Realised hostname was set incorrectly.
+2. Corrected, repeating previous rename step to remove erroneous hyphen (i.e. DC-01 to DC01).
+
+> Evidence: **Screenshot filename pending**.
+
+## 05/05/2026 1157 Verified hostname.
+1. Verified hostname correct (as 'DC01').
+
+> Evidence: **Screenshot filename pending**.
+
+## 05/05/2026 1159 Ran Baseline.ps1 pester test.
+
+- Completed successfully.
+
+## 05/05/2026 1215 Ran Preflight-Environment.Tests.ps1 pester test.
+
+- Realised scope required in StudentConfig.ps1.
+- Further updating Readme.md.
+- Removed hostname function from StudentCOnfig.ps1 - this shouldn't be there.
+- Readme.md currently split between New/Old layout internally while I work through correcting/updating it.
+
+## 05/05/2026 1344 Running initial commands on DC01 (in test/development VM):
+
+- Get-TimeZone showed timezone is correctly set as 'GMT Standard Time'.
+- hostname shows hostname correctly set as 'DC91'.
+- Realised development VM lacks second network connection, correcting via hypervisor.
+- Verified that connection 'Ethernet' has external access, and that 'External 2' does not.
+- Prevented DNS registration on 'Ethernet'.
+- Set IP address and default gateway on 'Ethernet 2'.
+- Set DNS server address to 'Ethernet 2' (as in, to itself).
+- Checked and installed Windows updates.
+- Installed [updated] PowerShell 7.
+- Checked for presence of PS module PSResourceGet; not found so installed.
+- Corrected erroneous PSResourceGet installation and verification commands in Readme.md.
+- Added requires path destination to Readme.md.
+
+> Evidence: **Screenshot filename pending**.
+
+# 05/05/2026 1527 PSDesiredStateConfiguration:
+
+- Experienced issues with assuring cross PowerShell (i.e. with PowerShell 5.1 too) compatibility.
+- Noted was relying on guidance issued to run 'Save-PSResource -Name PSDesiredStateConfiguration -Version 2.0.7 -Repository PSGallery -Path $dest -TrustRepository'.
+- Whereas verification command advised to run 'Get-Module ActiveDirectoryDsc,GroupPolicyDsc,xPSDesiredStateConfiguration,Pester,ComputerManagementDsc -ListAvailable'.
+- PSDesiredStateConfiguration 2.0.7 does not equal xPSDesiredStateConfiguration 9.2.1 as shown in a subsequent expected result screenshot.
+- Tried installing XPSDesiredStateConfiguration 9.2.1 using command 'Save-PSResource -Name xPSDesiredStateConfiguration -Version 9.2.1 -Repository PSGallery -Path $dest -TrustRepository'.
+- This was successful and produced the expected result; accordingly Readme.md updated.
+- Restart necessary for RSAT installation undertaken subsequently, so commit actioned first.
+
+> Evidence: **Screenshot filename pending** and "PS module installation progress 1" commit.
+
+
+
+
+
 
 

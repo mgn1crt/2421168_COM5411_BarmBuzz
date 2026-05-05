@@ -1,4 +1,4 @@
-# README.md 
+# NEW README.md
 
 BarmBuzz (2421168 - Mark Naylor)  
 COM5411 | Enterprise Operating Systems (Bren Tighe)  
@@ -7,7 +7,7 @@ Submission: Wednesday 18th March 2026
 Repository link is: https://github.com/mgn1crt/2421168_COM5411_BarmBuzz  
 ZIP per repository "" as of TBC TBC.
 
-## 1. Solution overview
+# 1. Solution overview
 
 A single domain solution is implemented consisting of:
 
@@ -21,15 +21,16 @@ Software configuration is:
 
 DSC v3 is the primary control plane.
 
-## 2. Architectural scope and boundaries
+# 2. Architectural scope and boundaries
 
-Text pending...
+- OUs (Operation units) are establsihed as 'Derby' and 'Nottingham' within the Bolton ('bolton.lcoal') domain.
+- The domain is the security boundary, OUs exist for policy application based on localised requirements.
 
-## 3. Automation strategy
+# 3. Automation strategy
 
-DSC (Desired State Configuration) is planend for repeat-build automation.
+DSC (Desired State Configuration) is planend for repeat-build automation encompassing the domain controller, users, groups, GPOs (Group Policy Objects), and OUs based on an initial framework.
 
-## 4. Repository structure
+# 4. Repository structure
 
 ```
 +---Documentation
@@ -57,21 +58,17 @@ DSC (Desired State Configuration) is planend for repeat-build automation.
 
 All paths are relative to ensure portability.
 
-## 5. Execution order (Run Book)
+# 5. Execution order (Run Book)
 
 - All commands to be executed in Powershell unless specified otherwise.
 - Use an elevated terminal.
 - Copy or type the code as specfied.
 
-> Some sections apply only to specific machines, apply as noted.
-
-#### Time configuration
-
-Incorrect/mismatched time zone configuration can induce authorisation failiure due to Kerberos security restrictions.
-
-> This section applies to all Windows machines.
+## Bolton domain controller configuration.
 
 1. **Time zone**
+
+    Incorrect/mismatched time zone configuration can induce authorisation failiure due to Kerberos security restrictions.
 
     Check the **Timezone**:
 
@@ -101,77 +98,71 @@ Incorrect/mismatched time zone configuration can induce authorisation failiure d
     Get-TimeZone
     ```
 
-#### Networking
+    > Temp: Apply on Windows client too. !TEMP-NOTE-TO-SELF-REMOVE-LATER!
 
-> Apply to domain controller DC-BOLTON on the Windows Server 2025 machine only.
+2. **Networking**
 
-Required configuration for networking on DC-BOLTON:
+> The external/internal network adaptors shoudld match the names as specified below; if otherwise named correct these first to avoid confusion/misconfiguration.
+
+Required configuration for networking on DC01:
 
 | Hostname | Network adaptor | IPv4 Address & Subnet | IPv6 Address & Subnet | Note |
 |----------|-----------------|-----------------------|-----------------------|------|
-| BB-DC01 | Ethernet | Assigned via DHCP | Not used | NATed interface; no DNS registration
-| | Ethernet 2 | 192.168.1.10 255.255.255.0 | Not used | Host only
+| DC01 | Ethernet | Assigned via DHCP | Not used | NATed interface; no DNS registration. Used for external internet access.
+| | Ethernet 2 | 192.168.1.10 255.255.255.0 | Not used | Host only, used for AD purposes.
 
-1. **System hostname**
+- Set the hostname:
 
-    Set the **Hostname**:
-
-    ```Powershell
-    Rename-Computer -NewName "DC-01" -Restart
+    ```Powershell  
+    Rename-Computer -NewName "DC-01" -Restart  
     ```
 
-2. **First network adaptor**
-
-    IP addressing handled via DHCP.
-
-    Prevent **DNS registration**:
+- Verify **Hostname**:
 
     ```Powershell
-    Set-DnsClient -InterfaceAlias "Ethernet" -RegisterThisConnectionsAddress $false
+    hostname
+    ```
+- Prevent DNS registration on ***first*** network adaptor.
+
+    ```Powershell
+    Set-DnsClient -InterfaceAlias "Ethernet" -RegisterThisConnectionsAddress $false 
     ```
 
-3. **Second network adaptor**:
-
-    Configure **IP addressing** and **Default gateway**:
+- Configure IP addressing and default gateway on ***second*** network adaptor:
 
     ```Powershell
     New-NetIPAddress -InterfaceAlias "Ethernet 2" -IPAddress 192.168.1.10 -PrefixLength 24 -DefaultGateway 192.168.1.1
     ```
 
-4. Set the **DNS server**:
+- Set the DNS server on ***second*** network adaptor (to itself):
 
     ```Powershell
     Set-DnsClientServerAddress -InterfaceAlias "Ethernet 2" -ServerAddresses 192.168.1.10
     ```
 
-#### Update Windows
+3. **Windows Update**
 
-> This section applies to all Windows machines.
+- Apply Windows updates using the system GUI.
 
-Apply Windows updates using the GUI.
-
-#### Install PowerShell 7
-
-> This section applies to all Windows machines.
+4. **Install PowerShell 7**
 
 Windows 11 and Windows Server 2025 include PowerShell 5.1; it is necessary to install PowerShell 7.x manually as both versions are required.
 
-Install PowerShell 7.x using winget:
+- Install PowerShell 7.x using winget:
 
-```Powershell
-winget install -e --id Microsoft.PowerShell -s winget
-```
+    ```Powershell
+    winget install -e --id Microsoft.PowerShell -s winget
+    ```
+
+- Verify installation in a Powershell 7 terminal:
+
+    ```Powershell
+    $PSVersionTable
+    ```
+
 > Powershell 7.x can be launched from within Windows using the command **pwsh**.
 
-Verify installation in a Powershell 7 terminal:
-
-```Powershell
-$PSVersionTable
-```
-
-#### Desired State Configuration 3
-
-> This section applies to all Windows machines.
+5. **Install Desired State Configuration (DSC)**
 
 1. Install DSC 3 using winget:
 
@@ -187,6 +178,10 @@ $PSVersionTable
 3. Modules:
 
     As platform neutrality is required, the PSResourceGet module must be installed.
+ 
+    ```Powershell
+    Install-Module Microsoft.PowerShell.PSResourceGet  
+    ```
 
     Verify availability of module PSResourceGet:
 
@@ -194,10 +189,10 @@ $PSVersionTable
     Get-Module Microsoft.PowerShell.PSResourceGet -ListAvailable
     ```
 
-    Add modules directory as destination of Windows PowerShell global module directory variable into shell:
+    Specify destination path:
 
     ```Powershell
-    Get-Module Microsoft.PowerShell.PSResourceGet -ListAvailable
+    $dest = "C:\Program Files\WindowsPowerShell\Modules"
     ```
 
     Download required administrative DSC and Pester modules:
@@ -205,7 +200,7 @@ $PSVersionTable
      ```Powershell
     Save-PSResource -Name ActiveDirectoryDsc -Version 6.6.0 -Repository PSGallery -Path $dest -TrustRepository
     Save-PSResource -Name GroupPolicyDsc -Version 1.0.3 -Repository PSGallery -Path $dest -TrustRepository
-    Save-PSResource -Name PSDesiredStateConfiguration -Version 2.0.7 -Repository PSGallery -Path $dest -TrustRepository
+    Save-PSResource -Name xPSDesiredStateConfiguration -Version 9.2.1 -Repository PSGallery -Path $dest -TrustRepositor
     Save-PSResource -Name Pester -Version 5.7.1 -Repository PSGallery -Path $dest -TrustRepository
     Save-PSResource -Name ComputerManagementDsc -Repository PSGallery -Path $dest -TrustRepository
     ```
@@ -219,14 +214,42 @@ $PSVersionTable
     Install RSAT tools using a PowerShell 5.1 terminal:
 
     ```Powershell
-    # On Windows Server 2025:
-    Install-WindowsFeature -Name RSAT-AD-PowerShell -IncludeAllSubFeature
-    Install-WindowsFeature -Name GPMC
+    Get-Module Install-WindowsFeature -Name RSAT-AD-PowerShell -IncludeAllSubFeature
+    ```
 
+    Install Group Policy Management Console (for GPO management):
+
+    ```Powershell
+    Install-WindowsFeature -Name GPMC
+    ```
+
+
+
+
+    
+
+    ```Powershell
     # On Windows 11:
     Add-WindowsCapability -Online -Name Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0
     Add-WindowsCapability -Online -Name Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0
     ``` 
+
+# Old Readme
+
+### Bolton domain controller configuration
+
+#### Update Windows
+
+> This section applies to all Windows machines.
+
+#### Install PowerShell 7
+
+> This section applies to all Windows machines.
+
+#### Desired State Configuration 3
+
+> This section applies to all Windows machines.
+
 
 
 ## 6. Idempotence and re-run behaviour
