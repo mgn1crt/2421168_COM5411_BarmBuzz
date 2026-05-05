@@ -114,36 +114,35 @@ Configuration StudentBaseline
                 Ensure = 'Present'
             }
         }
-    }
 
-    # Baseline network resources.
-    # InterfaceAlias is necessary within lab environment to avoid multiple NIC confusion; explicit AddressFamily to avoid silent IPV6 selection.
-    IPAddress StaticIPv4
-    {
-        IPAddress      = "$($node.Network.IPAddress)/$($node.Network.PrefixLength)"
-        InterfaceAlias = $node.Network.InterfaceAlias
-        AddressFamily  = $node.Network.AddressFamily
+        # Baseline network resources.
+        # InterfaceAlias is necessary within lab environment to avoid multiple NIC confusion; explicit AddressFamily to avoid silent IPV6 selection.
+        IPAddress StaticIPv4
+        {
+            IPAddress      = "$($node.Network.IPAddress)/$($node.Network.PrefixLength)"
+            InterfaceAlias = $node.Network.InterfaceAlias
+            AddressFamily  = $node.Network.AddressFamily
         
-        # Commented out as not valid.
-        # PrefixLength   = $node.Network.PrefixLength
-    }
+            # Commented out as not valid.
+            # PrefixLength   = $node.Network.PrefixLength
+        }
 
-    # Default gateway bound after IP presence to prevent incorrect application.
-    DefaultGatewayAddress DefaultGateway
-    {
-        Address        = $node.Network.DefaultGateway
-        InterfaceAlias = $node.Network.InterfaceAlias
-        AddressFamily  = $node.Network.AddressFamily
-        DependsOn      = '[IPAddress]StaticIPv4'
-    
-    }
+        # Default gateway bound after IP presence to prevent incorrect application.
+        DefaultGatewayAddress DefaultGateway
+        {
+            Address        = $node.Network.DefaultGateway
+            InterfaceAlias = $node.Network.InterfaceAlias
+            AddressFamily  = $node.Network.AddressFamily
+            DependsOn      = '[IPAddress]StaticIPv4'
+        }
 
-    # DNS client server address must bind to same intended interface and address family; key dependency for AD as DNS underpins domain discovery and record registration.
-    DnsServerAddress DnsClientServers
-    {
-        Address        = $node.Network.DnsServers
-        InterfaceAlias = $node.Network.InterfaceAlias
-        AddressFamily  = $node.Network.AddressFamily
-        DependsOn      = '[IPAddress]StaticIPv4'
-    }
+        # DNS client server address must bind to same intended interface and address family; key dependency for AD as DNS underpins domain discovery and record registration.
+        DnsServerAddress DnsClientServers
+        {
+            Address        = $node.Network.DnsServers
+            InterfaceAlias = $node.Network.InterfaceAlias
+            AddressFamily  = $node.Network.AddressFamily
+            DependsOn      = '[IPAddress]StaticIPv4'
+        }
+    }  
 }
