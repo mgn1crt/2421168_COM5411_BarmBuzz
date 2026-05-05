@@ -144,5 +144,10 @@
 - Lack of configuration files was anticipated and will be corrected.
 - Added mandatory parameters to StudentConfig.ps1.
 
-> Evidence: DSC\Outputs, StudentConfig.ps1, and "Updated StudentCOnfig.psl" commit.
+> Evidence: DSC\Outputs, DSC\Evidence, StudentConfig.ps1, and "Updated StudentCOnfig.psl" commit.
 
+# 05/05/2026 Repeated Run_BuildMain.psl testing.
+- Ran script, apparent invalid character and unrecognised StudentBasline configuration object.
+- Corrected three parameter types from incorrect Hashtable to PSCredential types.
+
+> Evidence: DSC\Outputs, DSC\Evidence, StudentConfig.psl, and "Updated StudentConfig.psl" commit.

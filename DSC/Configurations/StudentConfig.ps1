@@ -41,7 +41,8 @@ If you accidentally commit a secret:
 This is not paranoia - this is professional discipline.
 #>
 
-Configuration StudentBaseline {
+Configuration StudentBaseline
+{
 
     # Mandatory configuration parameters.
     param(
@@ -49,13 +50,13 @@ Configuration StudentBaseline {
        [hashtable]$ConfigurationData,
 
        [Parameter(Mandatory)]
-       [hashtable]$DomainAdminCredential,
+       [PSCredential]$DomainAdminCredential,
 
        [Parameter(Mandatory)]
-       [hashtable]$DsrmCredential,
+       [PSCredential]$DsrmCredential,
 
        [Parameter(Mandatory)]
-       [hashtable]$UserCredential
+       [PSCredential]$UserCredential
     )
 
     # Import modules.
