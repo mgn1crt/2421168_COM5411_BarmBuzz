@@ -1,0 +1,35 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260505194953
+Username: DC01\Administrator
+RunAs User: DC01\Administrator
+Configuration Name: 
+Machine: DC01 (Microsoft Windows NT 10.0.26100.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 3860
+PSVersion: 5.1.26100.32684
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.32684
+BuildVersion: 10.0.26100.32684
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+[+] Transcript started: Evidence\\Transcripts\\20260505_194953_Run_BuildMain.txt
+[+] Admin privileges confirmed.
+
+[Phase 1] Prerequisites...
+[*] Invoke-BarmBuzz-OneShots: LCM then Network
+--- [STAFF-ONLY] Configuring Persistent LCM Settings ---
+PS>TerminatingError(Import-Module): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: The version of Windows PowerShell on this computer is '5.1.26100.32684'. The module 'C:\Program Files\WindowsPowerShell\Modules\PSDesiredStateConfiguration\2.0.7\PSDesiredStateConfiguration.psd1' requires a minimum Windows PowerShell version of '6.1' to run. Verify that you have the minimum required version of Windows PowerShell installed, and then try again."
+>> TerminatingError(Import-Module): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: The version of Windows PowerShell on this computer is '5.1.26100.32684'. The module 'C:\Program Files\WindowsPowerShell\Modules\PSDesiredStateConfiguration\2.0.7\PSDesiredStateConfiguration.psd1' requires a minimum Windows PowerShell version of '6.1' to run. Verify that you have the minimum required version of Windows PowerShell installed, and then try again."
+>> TerminatingError(Import-Module): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: The version of Windows PowerShell on this computer is '5.1.26100.32684'. The module 'C:\Program Files\WindowsPowerShell\Modules\PSDesiredStateConfiguration\2.0.7\PSDesiredStateConfiguration.psd1' requires a minimum Windows PowerShell version of '6.1' to run. Verify that you have the minimum required version of Windows PowerShell installed, and then try again."
+>> TerminatingError(Import-Module): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: The version of Windows PowerShell on this computer is '5.1.26100.32684'. The module 'C:\Program Files\WindowsPowerShell\Modules\PSDesiredStateConfiguration\2.0.7\PSDesiredStateConfiguration.psd1' requires a minimum Windows PowerShell version of '6.1' to run. Verify that you have the minimum required version of Windows PowerShell installed, and then try again."
+
+[-] BUILD FAILED
+Message: The version of Windows PowerShell on this computer is '5.1.26100.32684'. The module 'C:\Program Files\WindowsPowerShell\Modules\PSDesiredStateConfiguration\2.0.7\PSDesiredStateConfiguration.psd1' requires a minimum Windows PowerShell version of '6.1' to run. Verify that you have the minimum required version of Windows PowerShell installed, and then try again.
+**********************
+Windows PowerShell transcript end
+End time: 20260505194953
+**********************
