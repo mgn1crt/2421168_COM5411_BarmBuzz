@@ -1,0 +1,149 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260505224158
+Username: DC01\Administrator
+RunAs User: DC01\Administrator
+Configuration Name: 
+Machine: DC01 (Microsoft Windows NT 10.0.26100.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 1772
+PSVersion: 5.1.26100.32684
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.32684
+BuildVersion: 10.0.26100.32684
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+[+] Transcript started: Evidence\\Transcripts\\20260505_224158_Run_BuildMain.txt
+[+] Admin privileges confirmed.
+
+[Phase 1] Prerequisites...
+[*] Invoke-BarmBuzz-OneShots: LCM then Network
+[*] LCM already configured (flag present).
+[*] Network already configured (flag present).
+[*] LCM already configured (skipping).
+[*] Network already configured (skipping).
+[+] Phase 1 complete.
+[+] Credentials loaded (hardcoded lab mode *** see warning in comments above ***).
+
+[Phase 2] Compile + Apply DSC...
+PS>TerminatingError(Import-PowerShellDataFile): "Exception calling "SafeGetValue" with "0" argument(s): "Cannot generate a Windows PowerShell object for a ScriptBlock evaluating dynamic expressions. Dynamic expression: @{
+    AllNodes = @(
+        @{
+            # Node name for single node build.
+            NodeName = 'localhost'
+
+            # Role specification (in this purpose, domain controller).
+            Role = 'DC'
+
+            # Name of this machine.
+            ComputerName = 'DC01'
+
+            # Time zone specificatio nis required for Kerberos tolerance logging.
+            TimeZone = 'GMT Standard Time'
+
+            # Name of this domain.
+            DomainName = 'bolton.barmbuzz.test'
+
+            # Network specification.
+            Network = @{
+            
+                # Alias of associated interface.
+                InterfaceAlias = 'Ethernet 2'
+
+                # Restrict to IPv4 to avoid IPV6 complications in labs.
+                AddressFamily = IPv4
+
+                # Static address specification for domain controller.
+                IPAddress = '192.168.1.10'
+                PrefixLength = 24
+                DefaultGateway = '192.168.1.1'
+
+                # DNS settings (before promotion).
+                DnsServers = @('192.168.1.10')
+            }
+            
+            # Declarative feature list for configuration loop.
+            Features = @{
+                Add = @('AD-Domain-Services','DNS')
+            }
+
+            # Optional baseline grouping for later consideration (without logic rewrite).
+            Baseline = @{
+                PowerPlan = 'High Performance'
+            }
+            # SECURITY NOTE: Future credential properties will be added by the orchestrator
+            # at runtime, not stored here. Example (YOU DON'T ADD THIS YET):
+            # DomainCredential = $PSCredentialObject  # Injected by Run_BuildMain.ps1
+            
+            # CERTIFICATE ENCRYPTION (Production pattern - informational for now):
+            # CertificateFile = 'C:\Certs\DscPublicKey.cer'  # Public key for MOF encryption
+            # Thumbprint = '1234567890ABCDEF...'            # Certificate thumbprint
+            # PsDscAllowPlainTextPassword = $false           # Force encryption (production)
+        }
+    )
+}.""
+
+[-] BUILD FAILED
+Message: Exception calling "SafeGetValue" with "0" argument(s): "Cannot generate a Windows PowerShell object for a ScriptBlock evaluating dynamic expressions. Dynamic expression: @{
+    AllNodes = @(
+        @{
+            # Node name for single node build.
+            NodeName = 'localhost'
+
+            # Role specification (in this purpose, domain controller).
+            Role = 'DC'
+
+            # Name of this machine.
+            ComputerName = 'DC01'
+
+            # Time zone specificatio nis required for Kerberos tolerance logging.
+            TimeZone = 'GMT Standard Time'
+
+            # Name of this domain.
+            DomainName = 'bolton.barmbuzz.test'
+
+            # Network specification.
+            Network = @{
+            
+                # Alias of associated interface.
+                InterfaceAlias = 'Ethernet 2'
+
+                # Restrict to IPv4 to avoid IPV6 complications in labs.
+                AddressFamily = IPv4
+
+                # Static address specification for domain controller.
+                IPAddress = '192.168.1.10'
+                PrefixLength = 24
+                DefaultGateway = '192.168.1.1'
+
+                # DNS settings (before promotion).
+                DnsServers = @('192.168.1.10')
+            }
+            
+            # Declarative feature list for configuration loop.
+            Features = @{
+                Add = @('AD-Domain-Services','DNS')
+            }
+
+            # Optional baseline grouping for later consideration (without logic rewrite).
+            Baseline = @{
+                PowerPlan = 'High Performance'
+            }
+            # SECURITY NOTE: Future credential properties will be added by the orchestrator
+            # at runtime, not stored here. Example (YOU DON'T ADD THIS YET):
+            # DomainCredential = $PSCredentialObject  # Injected by Run_BuildMain.ps1
+            
+            # CERTIFICATE ENCRYPTION (Production pattern - informational for now):
+            # CertificateFile = 'C:\Certs\DscPublicKey.cer'  # Public key for MOF encryption
+            # Thumbprint = '1234567890ABCDEF...'            # Certificate thumbprint
+            # PsDscAllowPlainTextPassword = $false           # Force encryption (production)
+        }
+    )
+}."
+**********************
+Windows PowerShell transcript end
+End time: 20260505224158
+**********************
