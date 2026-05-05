@@ -134,7 +134,7 @@ Configuration StudentBaseline
     {
         Address        = $node.Network.DefaultGateway
         InterfaceAlias = $node.Network.InterfaceAlias
-        # AddressFamily  = $node.Network.AddressFamily
+        AddressFamily  = [String]$node.Network.AddressFamily
         DependsOn      = '[IPAddress]StaticIPv4'
     
     }
