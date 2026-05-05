@@ -67,7 +67,7 @@ Configuration StudentBaseline
 
     # Import-DscResource = '@{ModuleName="NetworkingDsc"; RequiredVersion="9.1.0"}'.PowerSHell
 
-    $node = $ConfigurationData.AllNodes
+    $node = $ConfigurationData.AllNodes | Where-Object NodeName -eq $Node | Select-Object -First 1
 
     Node localhost {
         # Pull the node object so every resource reads from the data plane.
