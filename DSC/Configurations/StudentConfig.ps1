@@ -68,7 +68,7 @@ Configuration StudentBaseline
 
     Node localhost {
         # Pull the node object so every resource reads from the data plane.
-        # $node = $ConfigurationData.AllNodes | Where-Object { $_.NodeName -eq $Node.NodeName }
+        $node = $ConfigurationData.AllNodes | Where-Object { $_.NodeName -eq $Node.NodeName }
 
         # Baseline control 1: Computer identity.
         # Renaming is pre-requisite for stable AD DS identity.
