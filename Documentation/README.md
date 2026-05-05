@@ -272,10 +272,6 @@ Windows 11 and Windows Server 2025 include PowerShell 5.1; it is necessary to in
     Save-PSResource -Name Pester -RequiredVersion 5.7.1 -Repository PSGallery -Path $Dest -TrustRepository
     ```  
 
-
-
-    
-
     ```Powershell
     # On Windows 11:
     Add-WindowsCapability -Online -Name Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0

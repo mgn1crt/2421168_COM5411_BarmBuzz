@@ -56,25 +56,19 @@
 3. Was using the Readme.md as a reference point (pre-constructing this file), rewriting this.
 4. Applied DC-01 hostname to DC-TEST VM.
 
-> Evidence: **Screenshot filename pending** and "Intermittent commit - hostname" of 1134 05/05/2026.
-
 ## 05/05/2026 1147 Verified hostname rename.
 
 1. Ran 'hostname' command.
 2. Updated Readme.md to specify this action to confirm rename.
 
-> Evidence: **Screenshot filename pending**.
+> Evidence: Readme.md.
 
 ## 05/05/2026 1154 Ran Baseline.ps1 pester test.
 1. Realised hostname was set incorrectly.
 2. Corrected, repeating previous rename step to remove erroneous hyphen (i.e. DC-01 to DC01).
 
-> Evidence: **Screenshot filename pending**.
-
 ## 05/05/2026 1157 Verified hostname.
 1. Verified hostname correct (as 'DC01').
-
-> Evidence: **Screenshot filename pending**.
 
 ## 05/05/2026 1159 Ran Baseline.ps1 pester test.
 
@@ -87,22 +81,23 @@
 - Removed hostname function from StudentCOnfig.ps1 - this shouldn't be there.
 - Readme.md currently split between New/Old layout internally while I work through correcting/updating it.
 
+> Evidence: Readme.md.
+
 ## 05/05/2026 1344 Running initial commands on DC01 (in test/development VM):
 
 - Get-TimeZone showed timezone is correctly set as 'GMT Standard Time'.
 - hostname shows hostname correctly set as 'DC91'.
-- Realised development VM lacks second network connection, correcting via hypervisor.
-- Verified that connection 'Ethernet' has external access, and that 'External 2' does not.
 - Prevented DNS registration on 'Ethernet'.
 - Set IP address and default gateway on 'Ethernet 2'.
 - Set DNS server address to 'Ethernet 2' (as in, to itself).
 - Checked and installed Windows updates.
 - Installed [updated] PowerShell 7.
+- Installed and verified installation of DSC.
 - Checked for presence of PS module PSResourceGet; not found so installed.
 - Corrected erroneous PSResourceGet installation and verification commands in Readme.md.
-- Added requires path destination to Readme.md.
+- Added required path destination to Readme.md.
 
-> Evidence: **Screenshot filename pending**.
+> Evidence: Screenshots: '2026-05-05 1406 Switch configuration.png', '2026-05-05 1407 Ethernet 1 (External access) connection.png', '2026-05-05 1407 Ethernet 2 (Internal only) connection.png', '2026-05-05 1447 TimeZone.png', '2026-05-05 1450 Hostname shows correctly.png', '2026 05 05 1450 Ethernets configuration.png', '2026-05-05 1450 Ethernet configuration, PShell 7 install.png', '2026-05-05 1452 DSC installation.png', '2026-05-05 1506 PSResourceGet installation verified.png', '2026-05-05 1503 PSResourceGet installation.png'. '2026-05-05 1506 PSResourceGet installation verified.png', and '2026-05-05 1515 Required DSC and Pester module installation.png'.
 
 # 05/05/2026 1527 PSDesiredStateConfiguration/RSAT:
 
@@ -114,19 +109,23 @@
 - This was successful and produced the expected result; accordingly Readme.md updated.
 - Restart necessary for RSAT installation undertaken subsequently, so commit actioned first.
 
-> Evidence: **Screenshot filename pending** and "PS module installation progress 1" commit.
+> Evidence: Screenshots: '2026-05-05 1533 XPSDC installation.png', and '2026-05-05 1533 Module installation verified.png'; Readme.md, and "PS module installation progress 1" commit.
 
 # 05/05/2026 1558 Continued installations:
-- Installed Group Policy Management console succesfully.
+- Installed ActiveDirectoryDsc succesfully.
 - Verified installations sucessfully.
 - Pinned ActiveDirectoryDsc module to version 6.6.0, with Readme.md udpated to reflect this.
 - Installed and verified GroupPolicyDsc module with Readme.md updated.
 - Attempted installation of Pester; incorrect syntax corrected.
 - Re-attempted Pester installation, verified successfully with Readme.md updated to reflect this.
 
-> Evidence: **Screenshot filename pending** and "PS module installation progress 2" commit.
+> Evidence: Screenshots: '2026-05-05 1558 GPMC installation.png', '2026-05-05 1621 Module installation verified.png', and '2025-05-05 1627 Pester installation.png'; and "PS module installation progress 2" commit.
 
+# 05/05/2026 1857 Screenshots
+- Uploaded current screenshot files.
+- Updated Readme.md with screenshot file names.
 
+> Evidence: Screenshots as specified, Readme.md, "Screenshot upload 1" commit.
 
 
 
