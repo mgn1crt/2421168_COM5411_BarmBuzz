@@ -49,20 +49,20 @@ Configuration StudentBaseline
        [Parameter(Mandatory)]
        [hashtable]$ConfigurationData,
 
-       [Parameter(Mandatory)]
-       [PSCredential]$DomainAdminCredential,
+       # [Parameter(Mandatory)]
+       # [PSCredential]$DomainAdminCredential,
 
-       [Parameter(Mandatory)]
-       [PSCredential]$DsrmCredential,
+       # [Parameter(Mandatory)]
+       # [PSCredential]$DsrmCredential,
 
-       [Parameter(Mandatory)]
-       [PSCredential]$UserCredential
+       # [Parameter(Mandatory)]
+       # [PSCredential]$UserCredential
     )
 
     # Import modules.
     Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName ComputerManagementDSC
-    Import-DscResource -ModuleName ActivedirectoryDSC
+   # Import-DscResource -ModuleName ActivedirectoryDSC
 
     $nodes = $ConfigurationData.AllNodes
 
