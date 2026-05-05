@@ -125,9 +125,24 @@
 - Uploaded current screenshot files.
 - Updated Readme.md with screenshot file names.
 
-> Evidence: Screenshots as specified, Readme.md, "Screenshot upload 1" commit.
+> Evidence: Screenshots as specified, Runbook.md, "Screenshot upload 1" commit.
 
+# 05/05/2026 AllNodes.psd1
+- Populated AllNodes.psd1 with baseline configuration items.
 
+> Evidence: "Wk2S1 baseline data AllNodes naming time network features" commit.
 
+# 05/05/2026 StudentConfig.ps1
+- Populated StudentConfig.ps1 with baseline configuration items.
 
+> Evidence: "Wk2S1 baseline enforce computer name and timezone" commit.
+
+# 05/05/2026 Commenced Run_BuildMain.psl testing.
+- Ran script initially incorrectly in PowerShell 5.1 terminal.
+- Subsequently successfuly commenced execution in PowerShell 7 terminal.
+- Then, parameter for DomainAdminCredential lacking, and computer name unspecified, and configuration directory does not have any files errors shown.
+- Lack of configuration files was anticipated and will be corrected.
+- Added mandatory parameters to StudentConfig.ps1.
+
+> Evidence: DSC\Outputs, StudentConfig.ps1, and "Updated StudentCOnfig.psl" commit.
 

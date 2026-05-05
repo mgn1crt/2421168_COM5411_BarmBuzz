@@ -42,10 +42,10 @@ This is not just a rule - this is professional survival.
     AllNodes = @(
         @{
             # Node name for single node build.
-            NodeName   = 'localhost'
+            NodeName = 'localhost'
 
             # Role specification (in this purpose, domain controller).
-            Role       = 'DC'
+            Role = 'DC'
 
             # Name of this machine.
             ComputerName = 'DC01'

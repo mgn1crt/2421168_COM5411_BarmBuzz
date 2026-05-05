@@ -42,7 +42,21 @@ This is not paranoia - this is professional discipline.
 #>
 
 Configuration StudentBaseline {
-    param()
+
+    # Mandatory configuration parameters.
+    param(
+       [Parameter(Mandatory)]
+       [hashtable]$ConfigurationData,
+
+       [Parameter(Mandatory)]
+       [hashtable]$DomainAdminCredential,
+
+       [Parameter(Mandatory)]
+       [hashtable]$DsrmCredential,
+
+       [Parameter(Mandatory)]
+       [hashtable]$UserCredential
+    )
 
     # Import modules.
     Import-DscResource -ModuleName PSDesiredStateConfiguration
