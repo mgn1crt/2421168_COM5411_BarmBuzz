@@ -159,3 +159,13 @@
 
 > Evidence: DSC\Outputs, DSC\Evidence, StudentConfig.psl, and "Attempted StudentConfig.psl correction" commits.
 
+# 05/05/2026 2129 Updated StudentConfig.psl
+- For WindowsFeature addition.
+- Delayed by initially unrecognised syntax error causing an unexpected token (assiging using =); corrected.
+- After multiple runs, errors resolved.
+
+> Evidence: DSC\Outputs, DSC\Evidence, StudentConfi.psl.
+
+
+
+
