@@ -64,7 +64,9 @@ Configuration StudentBaseline
     Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName ComputerManagementDSC
    # Import-DscResource -ModuleName ActivedirectoryDSC
-    Import-DscResource -ModuleName NetworkingDsc
+    Import-DscResource -ModuleName NetworkingDsc -ModuleVersion 9.1.0
+
+    # Import-DscResource = '@{ModuleName="NetworkingDsc"; RequiredVersion="9.1.0"}'.PowerSHell
 
     $nodes = $ConfigurationData.AllNodes
 
@@ -119,7 +121,7 @@ Configuration StudentBaseline
     # InterfaceAlias is necessary within lab environment to avoid multiple NIC confusion; explicit AddressFamily to avoid silent IPV6 selection.
     IPAddress StaticIPv4
     {
-        IPAddress      = $($node.Network.IPAddress)/$($node.Network.PrefixLength)
+        IPAddress      = "$($node.Network.IPAddress)/$($node.Network.PrefixLength)"
         InterfaceAlias = $node.Network.InterfaceAlias
         AddressFamily  = $node.Network.AddressFamily
         

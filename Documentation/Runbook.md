@@ -179,6 +179,9 @@
 # 05/05/2026 2212 Updated StudentConfig.psl
 - Network prefix specified in StudentConfig.psl reported as not valid.
 - PrefixLength not valid; included with IPAddress instead; StudentConfig.psl updated.
+- Script run resulted in multiple errors, attempting to fix divide by zero error first.
+- Identified as caused by revised specification of IP address with prefix length; attempting correction.
+- Also corrected ambiguity regarding NetworkingDSc module version.
 
 
 
