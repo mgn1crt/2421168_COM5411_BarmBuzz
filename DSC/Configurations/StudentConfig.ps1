@@ -123,7 +123,7 @@ Configuration StudentBaseline
     {
         IPAddress      = "$($node.Network.IPAddress)/$($node.Network.PrefixLength)"
         InterfaceAlias = $node.Network.InterfaceAlias
-        AddressFamily  = $node.Network.AddressFamily
+        AddressFamily  = [String]$node.Network.AddressFamily
         
         # Commented out as not valid.
         # PrefixLength   = $node.Network.PrefixLength
