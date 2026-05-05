@@ -66,8 +66,6 @@ Configuration StudentBaseline
    # Import-DscResource -ModuleName ActivedirectoryDSC
     Import-DscResource -ModuleName NetworkingDsc
 
-
-
     $nodes = $ConfigurationData.AllNodes
 
     Node localhost {
@@ -115,5 +113,34 @@ Configuration StudentBaseline
             Name = $featureName
             Ensure = 'Present'
         }
+    }
+
+    # Baseline network resources.
+    # InterfaceAlias is necessary within lab environment to avoid multiple NIC confusion; explicit AddressFamily to avoid silent IPV6 selection.
+    IPAddress StaticIPv4
+    {
+        IPAddress      = $node.Network.IPAddress
+        InterfaceAlias = $node.Network.InterfaceAlias
+        AddressFamily  = $node.Network.AddressFamily
+        PrefixLength   = $node.Network.PrefixLength
+    }
+
+    # Default gateway bound after IP presence to prevent incorrect application.
+    DefaultGatewayAddress DefaultGateway
+    {
+        Address        = $node.Network.DefaultGateway
+        InterfaceAlias = $node.Network.InterfaceAlias
+        AddressFamily  = $node.Network.AddressFamily
+        DependsOn      = '[IPAddress]StaticIPv4'
+    
+    }
+
+    # DNS client server address must bind to same intended interface and address family; key dependency for AD as DNS underpins domain discovery and record registration.
+    DnsServerAddress DnsClientServers
+    {
+        Address        = $node.Network.DnsServers
+        InterfaceAlias = $node.Network.InterfaceAlias
+        AddressFamily  = $node.Network.AddressFamily
+        DependsOn      = '[IPAddress]StaticIPv4'
     }
 }
