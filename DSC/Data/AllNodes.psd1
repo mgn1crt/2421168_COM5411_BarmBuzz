@@ -44,6 +44,8 @@ This is not just a rule - this is professional survival.
             NodeName   = 'localhost'
             Role       = 'DC'
             DomainName = 'bolton.barmbuzz.test'
+            ComputerName = 'DC01'
+            TimeZOne = 'GMT Standard Time'
             
             # SECURITY NOTE: Future credential properties will be added by the orchestrator
             # at runtime, not stored here. Example (YOU DON'T ADD THIS YET):

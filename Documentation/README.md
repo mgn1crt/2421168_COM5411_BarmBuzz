@@ -9,7 +9,17 @@ ZIP per repository "" as of TBC TBC.
 
 ## 1. Solution overview
 
-Text pending...
+A single domain solution is implemented consisting of:
+
+- Root domain: 'bolton.local'.
+
+Software configuration is:
+
+- Domain controller: Windows Server 2022.
+- Windows client: Windows 11 Professional.
+- Linux client: Ubuntu desktop.
+
+DSC v3 is the primary control plane.
 
 ## 2. Architectural scope and boundaries
 
@@ -17,7 +27,7 @@ Text pending...
 
 ## 3. Automation strategy
 
-Text pending...
+DSC (Desired State Configuration) is planend for repeat-build automation.
 
 ## 4. Repository structure
 
