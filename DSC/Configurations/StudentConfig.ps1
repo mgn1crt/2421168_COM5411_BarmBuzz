@@ -119,10 +119,12 @@ Configuration StudentBaseline
     # InterfaceAlias is necessary within lab environment to avoid multiple NIC confusion; explicit AddressFamily to avoid silent IPV6 selection.
     IPAddress StaticIPv4
     {
-        IPAddress      = $node.Network.IPAddress
+        IPAddress      = "$($node.Network.IPAddress)/$($node.Network.PrefixLength)"
         InterfaceAlias = $node.Network.InterfaceAlias
         AddressFamily  = $node.Network.AddressFamily
-        PrefixLength   = $node.Network.PrefixLength
+        
+        # Commented out as not valid.
+        # PrefixLength   = $node.Network.PrefixLength
     }
 
     # Default gateway bound after IP presence to prevent incorrect application.

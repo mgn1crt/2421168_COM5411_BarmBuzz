@@ -171,9 +171,14 @@
 - Attempted script run, but failed due to lack of NetworkingDsc module.
 - Thought corrected by installing the module using 'Install-Module -Name NetworkingDsc -Repository PSGallery -Force'.
 - Subsequently forced to all users to resolve path issue, using 'Install-Module NetworkingDsc -Scope AllUsers -Force'.
-- This module should already be present; consequently 'Save-PSResource -Name NetworkingDsc -Repository PSGallery -Path $dest -TrustRepository' added to Readme.md install instructions.
+- This failed; ultimately shown to be a PowerShell version issue; NetworkingDsc is designed for PowerShell 5.1; guidance in Readme.md updated.
+- Afterwards, module not found error corrected but others remain.
 
 > Evidence: DSC\Outputs, DSC\Evidence, StudentConfig.psl, Readme.md, and "Updated StudentConfig.psl for networking configuration" commit.
+
+# 05/05/2026 2212 Updated StudentConfig.psl
+- Network prefix specified in StudentConfig.psl reported as not valid.
+- PrefixLength not valid; included with IPAddress instead; StudentConfig.psl updated.
 
 
 
