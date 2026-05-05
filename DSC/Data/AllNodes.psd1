@@ -41,12 +41,48 @@ This is not just a rule - this is professional survival.
 @{
     AllNodes = @(
         @{
+            # Node name for single node build.
             NodeName   = 'localhost'
+
+            # Role specification (in this purpose, domain controller).
             Role       = 'DC'
-            DomainName = 'bolton.barmbuzz.test'
+
+            # Name of this machine.
             ComputerName = 'DC01'
-            TimeZOne = 'GMT Standard Time'
+
+            # Time zone specificatio nis required for Kerberos tolerance logging.
+            TimeZone = 'GMT Standard Time'
+
+            # Name of this domain.
+            DomainName = 'bolton.barmbuzz.test'
+
+            # Network specification.
+            Network = @{
             
+                # Alias of associated interface.
+                InterfaceAlias = 'Ethernet 2'
+
+                # Restrict to IPv4 to avoid IPV6 complications in labs.
+                AddressFamily = 'IPv4'
+
+                # Static address specification for domain controller.
+                IPAddress = '192.168.1.10'
+                PrefixLength = 24
+                DefaultGateway = '192.168.1.1'
+
+                # DNS settings (before promotion).
+                DnsServers = @('192.168.1.10')
+            }
+            
+            # Declarative feature list for configuration loop.
+            Features = @{
+                Add = @('AD-Domain-Services','DNS')
+            }
+
+            # Optional baseline grouping for later consideration (without logic rewrite).
+            Baseline = @{
+                PowerPlan = 'High Performance'
+            }
             # SECURITY NOTE: Future credential properties will be added by the orchestrator
             # at runtime, not stored here. Example (YOU DON'T ADD THIS YET):
             # DomainCredential = $PSCredentialObject  # Injected by Run_BuildMain.ps1
