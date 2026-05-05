@@ -100,9 +100,10 @@ Configuration StudentBaseline
             Ensure          = 'Present'
             Contents        = 'Proof-of-life: DSC created this file.'
             DependsOn       = '[File]TestFolder'
-        }  
-        
-        # Baseline feature readiness.
+        }            
+    }
+
+    # Baseline feature readiness.
         # Foreach utilised as WindowsFeature is a separate resource instance per feature name.
         foreach ($FeatureName in $Node.Features.Add)
         {
@@ -112,8 +113,4 @@ Configuration StudentBaseline
                 Ensure = 'Present'
             }
         }
-
-    
-        
-    }
 }
