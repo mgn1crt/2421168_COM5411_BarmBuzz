@@ -182,7 +182,9 @@
 - Script run resulted in multiple errors, attempting to fix divide by zero error first.
 - Identified as caused by revised specification of IP address with prefix length; attempting correction.
 - Also corrected ambiguity regarding NetworkingDSc module version.
-- Struggling to identify issue with AddressFamily variable (as pulled from AllNodes.psd1); anything utilsiing this reporting a null value despite specification existing. 
+- Struggling to identify issue with AddressFamily variable (as pulled from AllNodes.psd1); anything utilsiing this reporting a null value despite specification existing.
+- Corrected AddressFamily issue, now multiple of same key in use has returned.
+ 
 
 
 

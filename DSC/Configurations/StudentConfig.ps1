@@ -43,7 +43,6 @@ This is not paranoia - this is professional discipline.
 
 Configuration StudentBaseline
 {
-
     # Mandatory configuration parameters.
     param(
        # This section caused the key already used error and is therefore commented out.
@@ -103,17 +102,17 @@ Configuration StudentBaseline
             Ensure          = 'Present'
             Contents        = 'Proof-of-life: DSC created this file.'
             DependsOn       = '[File]TestFolder'
-        }            
-    }
-
-    # Baseline feature readiness.
-    # Foreach utilised as WindowsFeature is a separate resource instance per feature name.
-    foreach ($featureName in $Node.Features.Add)
-    {
-        WindowsFeature "Feature_$featureName"
+        }
+        
+        # Baseline feature readiness.
+        # Foreach utilised as WindowsFeature is a separate resource instance per feature name.
+        foreach ($featureName in $Node.Features.Add)
         {
-            Name = $featureName
-            Ensure = 'Present'
+            WindowsFeature "Feature_$featureName"
+            {
+                Name = $featureName
+                Ensure = 'Present'
+            }
         }
     }
 
