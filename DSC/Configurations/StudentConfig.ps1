@@ -46,17 +46,17 @@ Configuration StudentBaseline
 
     # Mandatory configuration parameters.
     param(
+       # [Parameter(Mandatory)]
+       # [hashtable]$ConfigurationData
+
        [Parameter(Mandatory)]
-       [hashtable]$ConfigurationData
+       [PSCredential]$DomainAdminCredential,
 
-       # [Parameter(Mandatory)]
-       # [PSCredential]$DomainAdminCredential,
+       [Parameter(Mandatory)]
+       [PSCredential]$DsrmCredential,
 
-       # [Parameter(Mandatory)]
-       # [PSCredential]$DsrmCredential,
-
-       # [Parameter(Mandatory)]
-       # [PSCredential]$UserCredential
+       [Parameter(Mandatory)]
+       [PSCredential]$UserCredential
     )
 
     # Import modules.
