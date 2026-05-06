@@ -49,14 +49,14 @@ Configuration StudentBaseline
        [Parameter(Mandatory)]
        [hashtable]$ConfigurationData,
 
-       [Parameter(Mandatory)]
-       [PSCredential]$DomainAdminCredential,
+       # [Parameter(Mandatory)]
+       # [PSCredential]$DomainAdminCredential,
 
-       [Parameter(Mandatory)]
-       [PSCredential]$DsrmCredential,
+       # [Parameter(Mandatory)]
+       # [PSCredential]$DsrmCredential,
 
-       [Parameter(Mandatory)]
-       [PSCredential]$UserCredential
+       # [Parameter(Mandatory)]
+       # [PSCredential]$UserCredential
     )
 
     # Import modules.
