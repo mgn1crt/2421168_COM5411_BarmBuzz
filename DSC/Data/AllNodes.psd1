@@ -78,9 +78,7 @@ This is not just a rule - this is professional survival.
             Features = @{
                 Add = @('AD-Domain-Services','DNS')
             }
-
             
-
             # Optional baseline grouping for later consideration (without logic rewrite).
             Baseline = @{
                 PowerPlan = 'High Performance'
