@@ -79,16 +79,7 @@ This is not just a rule - this is professional survival.
                 Add = @('AD-Domain-Services','DNS')
             }
 
-            # Baseline feature readiness.
-            # Foreach utilised as WindowsFeature is a separate resource instance per feature name.
-            foreach ($featureName in $Node.Features.Add)
-            {
-                WindowsFeature "Feature_$featureName"
-                {   
-                    Name = $featureName
-                    Ensure = 'Present'
-                }
-            }
+            
 
             # Optional baseline grouping for later consideration (without logic rewrite).
             Baseline = @{

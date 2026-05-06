@@ -104,7 +104,16 @@ Configuration StudentBaseline
             DependsOn       = '[File]TestFolder'
         }
         
-        
+        # Baseline feature readiness.
+            # Foreach utilised as WindowsFeature is a separate resource instance per feature name.
+            foreach ($featureName in $Node.Features.Add)
+            {
+                WindowsFeature "Feature_$featureName"
+                {   
+                    Name = $featureName
+                    Ensure = 'Present'
+                }
+            }
 
         # Baseline network resources.
         # InterfaceAlias is necessary within lab environment to avoid multiple NIC confusion; explicit AddressFamily to avoid silent IPV6 selection.
