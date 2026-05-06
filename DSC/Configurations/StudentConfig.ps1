@@ -106,7 +106,7 @@ Configuration StudentBaseline
         
         # Baseline feature readiness.
         # Foreach utilised as WindowsFeature is a separate resource instance per feature name.
-        foreach ($featureName in $Node.Features.Add)
+        foreach ($featureName in $node.Features.Add)
             {
                 WindowsFeature "Feature_$featureName"
                 {   
