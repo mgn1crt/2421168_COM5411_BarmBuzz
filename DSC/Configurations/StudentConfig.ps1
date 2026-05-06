@@ -63,7 +63,7 @@ Configuration StudentBaseline
     Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName ComputerManagementDSC
    # Import-DscResource -ModuleName ActivedirectoryDSC
-    I# mport-DscResource -ModuleName NetworkingDsc -ModuleVersion 9.1.0
+    # Import-DscResource -ModuleName NetworkingDsc -ModuleVersion 9.1.0
 
     # Import-DscResource = '@{ModuleName="NetworkingDsc"; RequiredVersion="9.1.0"}'.PowerSHell
 
