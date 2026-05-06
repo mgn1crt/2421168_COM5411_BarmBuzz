@@ -17,7 +17,7 @@ NEVER COMMIT:
 
 WHY THIS MATTERS (Security Mindset):
 1. Git History is Permanent: Even if you delete a secret later, it's in the commit history forever
-2. Public Repos: Students often make repos public for portfolios - instant breach
+2. Public Repos: 1s often make repos public for portfolios - instant breach
 3. Credential Scanners: GitHub, GitLab, and Bitbucket scan for secrets automatically
 4. Professional Consequences: Companies fire employees for committing secrets (real incidents)
 

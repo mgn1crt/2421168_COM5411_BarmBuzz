@@ -1,0 +1,44 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260505235557
+Username: DC01\Administrator
+RunAs User: DC01\Administrator
+Configuration Name: 
+Machine: DC01 (Microsoft Windows NT 10.0.26100.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 4600
+PSVersion: 5.1.26100.32684
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.32684
+BuildVersion: 10.0.26100.32684
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+[+] Transcript started: Evidence\\Transcripts\\20260505_235557_Run_BuildMain.txt
+[+] Admin privileges confirmed.
+
+[Phase 1] Prerequisites...
+[*] Invoke-BarmBuzz-OneShots: LCM then Network
+[*] LCM already configured (flag present).
+[*] Network already configured (flag present).
+[*] LCM already configured (skipping).
+[*] Network already configured (skipping).
+[+] Phase 1 complete.
+[+] Credentials loaded (hardcoded lab mode *** see warning in comments above ***).
+
+[Phase 2] Compile + Apply DSC...
+[*] Compiling -> DSC\\Outputs\\StudentBaseline
+[*] Compiling via Windows PowerShell 5.1 (GroupPolicyDsc requires it)...
+
+[+] Compilation complete.
+[*] Applying configuration (waits until complete)...
+PS>TerminatingError(Start-DscConfiguration): "The computer name was not specified and the configuration directory does not have any configuration files."
+
+[-] BUILD FAILED
+Message: The computer name was not specified and the configuration directory does not have any configuration files.
+**********************
+Windows PowerShell transcript end
+End time: 20260505235557
+**********************
