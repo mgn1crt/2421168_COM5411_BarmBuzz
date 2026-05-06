@@ -63,7 +63,7 @@ Configuration StudentBaseline
     Import-DscResource -ModuleName PSDesiredStateConfiguration
     Import-DscResource -ModuleName ComputerManagementDSC
    # Import-DscResource -ModuleName ActivedirectoryDSC
-    Import-DscResource -ModuleName NetworkingDsc -ModuleVersion 9.1.0
+    I# mport-DscResource -ModuleName NetworkingDsc -ModuleVersion 9.1.0
 
     # Import-DscResource = '@{ModuleName="NetworkingDsc"; RequiredVersion="9.1.0"}'.PowerSHell
 
@@ -71,7 +71,7 @@ Configuration StudentBaseline
 
     Node localhost {
         # Pull the node object so every resource reads from the data plane.
-        # $node = $ConfigurationData.AllNodes | Where-Object { $_.NodeName -eq $Node.NodeName }
+        $node = $ConfigurationData.AllNodes | Where-Object { $_.NodeName -eq $Node.NodeName }
 
         # Baseline control 1: Computer identity.
         # Renaming is pre-requisite for stable AD DS identity.
